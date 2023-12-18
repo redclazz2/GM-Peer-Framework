@@ -1,0 +1,1 @@
+draw_text(5, 5, "Press SPACE to log");
