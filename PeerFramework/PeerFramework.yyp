@@ -26,6 +26,7 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Notes","folderPath":"folders/Notes.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Extensions","folderPath":"folders/Extensions.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Particle Systems","folderPath":"folders/Particle Systems.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"MultiClient","folderPath":"folders/Extensions/MultiClient.yy",},
   ],
   "IncludedFiles": [],
   "isEcma": false,
@@ -34,6 +35,8 @@
     "IDEVersion": "2023.11.1.129",
   },
   "resources": [
+    {"id":{"name":"MultiClientGetClientID","path":"scripts/MultiClientGetClientID/MultiClientGetClientID.yy",},},
+    {"id":{"name":"MultiClient","path":"extensions/MultiClient/MultiClient.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
   ],
   "RoomOrderNodes": [
