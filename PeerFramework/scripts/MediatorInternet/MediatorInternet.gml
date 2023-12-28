@@ -4,7 +4,7 @@ function InternetMediator(): Mediator() constructor{
 	_CurrentProtocolManager = new ProtocolManager(self._CurrentConfiguration.GetConfTickRate,self);
 	
 	self._init = function(){
-		
+		self._CurrentProtocolManager.InitializeProtocolManager();
 	}
 	
 	self._notify = function(){

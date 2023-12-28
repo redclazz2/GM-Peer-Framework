@@ -4,7 +4,7 @@ function ProtocolManager(TickRate,MyMediator) constructor{
 	_SubscribedProtocolsArray = [];
 	_InternalProtocolClock = 0;
 	
-	InitializePacketManager = function(){
+	InitializeProtocolManager = function(){
 		self._InternalProtocolClock = time_source_create(time_source_game,TickRate,time_source_units_frames,self.NotifySubscribersEngineTick,[],-1);
 	}
 	
