@@ -1,11 +1,11 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "ProtocolManager",
+  "name": "ProtocolEnums",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {
-    "name": "Manager",
-    "path": "folders/PeerFramework/Protocols/Manager.yy",
+    "name": "Enums",
+    "path": "folders/PeerFramework/Protocols/Enums.yy",
   },
 }

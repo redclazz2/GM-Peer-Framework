@@ -5,6 +5,7 @@ function InternetMediator(): Mediator() constructor{
 	
 	self._init = function(){
 		self._CurrentProtocolManager.InitializeProtocolManager();
+		logger(LOGLEVEL.DEBUG,"Internet Mediator Initialized!", "PeerFrameworkInternetMediator");
 	}
 	
 	self._notify = function(){

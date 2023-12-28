@@ -1,11 +1,11 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "ProtocolManager",
+  "name": "PacketManager",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {
     "name": "Manager",
-    "path": "folders/PeerFramework/Protocols/Manager.yy",
+    "path": "folders/PeerFramework/Packets/Manager.yy",
   },
 }

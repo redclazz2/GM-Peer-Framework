@@ -3,9 +3,12 @@ function ProtocolManager(TickRate,MyMediator) constructor{
 	_Mediator = MyMediator;
 	_SubscribedProtocolsArray = [];
 	_InternalProtocolClock = 0;
+	_TickRate = TickRate;
 	
 	InitializeProtocolManager = function(){
-		self._InternalProtocolClock = time_source_create(time_source_game,TickRate,time_source_units_frames,self.NotifySubscribersEngineTick,[],-1);
+		self._InternalProtocolClock = time_source_create(time_source_game,_TickRate,time_source_units_frames,self.NotifySubscribersEngineTick,[],-1);
+		time_source_start(self._InternalProtocolClock);
+		logger(LOGLEVEL.DEBUG,"Protocol Manager Initialized!", "PeerFrameworkProtocolManager");
 	}
 	
 	Destroy = function(){
@@ -19,6 +22,7 @@ function ProtocolManager(TickRate,MyMediator) constructor{
 		self._SubscribedProtocolsArray =  ds_map_values_to_array(_SubscribedProtocolsMap);
 	}
 	
+	//TODO
 	InitializeProtocol = function(ProtocolType){		
 		var _NewProtocol = 0;
 		
@@ -37,18 +41,23 @@ function ProtocolManager(TickRate,MyMediator) constructor{
 		self.UpdateSubscribedProtocolsArray();
 	}
 	
+	//TODO
 	DestroyProtocol = function(){
 		
 	}
 	
-	SubscribeProtocol =  function(){
-	
+	SubscribeProtocol =  function(ProtocolToRegister){
+		ds_map_add(self._SubscribedProtocolsMap,ProtocolToRegister._ProtocolId,ProtocolToRegister);
+		self.UpdateSubscribedProtocolsArray();
 	}
 	
-	UnSubscribeProtocol = function(){
+	UnSubscribeProtocol = function(ProtocolToUnSubscribe){
+		ds_map_delete(self._SubscribedProtocolsMap,ProtocolToUnSubscribe._ProtocolId);
+		self.UpdateSubscribedProtocolsArray();
 	}
 	
+	//TODO
 	NotifySubscribersEngineTick = function(){
-	
+		//logger(LOGLEVEL.DEBUG,"Protocol Manager Subscriber Update!", "PeerFrameworkProtocolManager");
 	}
 }
