@@ -58,10 +58,10 @@ function logger() {
 	var timetxt = string_format((date_current_datetime() - 25569) * 86400, 0, 3); // to string containing unix time, 3 decimal places
 
 	// process call stack
-	var method = "";
+	var _method = "";
 	if (1) {
 		var callstack = debug_get_callstack();
-		var method = callstack[1]; // 1st item should be the thing that called logger
+		var _method = callstack[1]; // 1st item should be the thing that called logger
 	}
 
 	// make debug string
@@ -93,7 +93,7 @@ function logger() {
 
 	var str = @'<log4j:event logger="'+loggername+@'" timestamp="'+timetxt+@'" level="'+leveltxt+@'" thread="[main]">
 	<log4j:message>'+logmessage+@'</log4j:message>
-	<log4j:locationInfo method="'+method+@'" class="" file="" />
+	<log4j:locationInfo method="'+_method+@'" class="" file="" />
 	<log4j:properties>'+xmlpropstr+@'</log4j:properties>
 	</log4j:event>
 	';
