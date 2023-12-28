@@ -1,11 +1,11 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "GMLClasses",
+  "name": "MediatorInterface",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {
-    "name": "GML-Classes",
-    "path": "folders/Extensions/GML-Classes.yy",
+    "name": "Mediators",
+    "path": "folders/PeerFramework/Mediators.yy",
   },
 }
