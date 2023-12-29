@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "Packet",
+  "name": "PacketInterface",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {

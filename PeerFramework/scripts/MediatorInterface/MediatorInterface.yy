@@ -5,7 +5,7 @@
   "isCompatibility": false,
   "isDnD": false,
   "parent": {
-    "name": "Mediators",
-    "path": "folders/PeerFramework/Mediators.yy",
+    "name": "Interface",
+    "path": "folders/PeerFramework/Mediators/Interface.yy",
   },
 }

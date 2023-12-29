@@ -1,11 +1,11 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "MediatorInternet",
+  "name": "PacketSimple",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {
-    "name": "Types",
-    "path": "folders/PeerFramework/Mediators/Types.yy",
+    "name": "Packet",
+    "path": "folders/PeerFramework/Packets/Packet.yy",
   },
 }

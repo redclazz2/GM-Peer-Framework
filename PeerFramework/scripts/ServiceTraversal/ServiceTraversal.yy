@@ -1,11 +1,11 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "MediatorInternet",
+  "name": "ServiceTraversal",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {
-    "name": "Types",
-    "path": "folders/PeerFramework/Mediators/Types.yy",
+    "name": "Services",
+    "path": "folders/PeerFramework/Services.yy",
   },
 }

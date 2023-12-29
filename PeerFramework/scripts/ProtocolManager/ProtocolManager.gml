@@ -11,6 +11,7 @@ function ProtocolManager(TickRate,MyMediator) constructor{
 		logger(LOGLEVEL.DEBUG,"Protocol Manager Initialized!", "PeerFrameworkProtocolManager");
 	}
 	
+	//TODO destroy every protocol inside the map and array.
 	Destroy = function(){
 		ds_map_destroy(self._SubscribedProtocolsMap);
 		time_source_stop(self._InternalProtocolClock);
