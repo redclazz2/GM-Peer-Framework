@@ -56,7 +56,6 @@
     {"name":"Core","order":1,"path":"folders/Extensions/UI Debug/Emu/Core.yy",},
     {"name":"Graphics","order":2,"path":"folders/Extensions/UI Debug/Emu/Graphics.yy",},
     {"name":"slices","order":1,"path":"folders/Extensions/UI Debug/Emu/Graphics/slices.yy",},
-    {"name":"Notes","order":13,"path":"folders/Notes.yy",},
     {"name":"Objects","order":9,"path":"folders/Objects.yy",},
     {"name":"PeerFramework","order":5,"path":"folders/PeerFramework.yy",},
     {"name":"Configuration","order":2,"path":"folders/PeerFramework/Configuration.yy",},

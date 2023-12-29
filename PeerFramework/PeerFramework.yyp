@@ -70,7 +70,6 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Core","folderPath":"folders/Extensions/UI Debug/Emu/Core.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Graphics","folderPath":"folders/Extensions/UI Debug/Emu/Graphics.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"slices","folderPath":"folders/Extensions/UI Debug/Emu/Graphics/slices.yy",},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Notes","folderPath":"folders/Notes.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Objects","folderPath":"folders/Objects.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"PeerFramework","folderPath":"folders/PeerFramework.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Configuration","folderPath":"folders/PeerFramework/Configuration.yy",},
