@@ -1,11 +1,11 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "LoggerNames",
+  "name": "ProtocolInterface",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {
-    "name": "Log",
-    "path": "folders/PeerFramework/Log.yy",
+    "name": "Types",
+    "path": "folders/PeerFramework/Protocols/Types.yy",
   },
 }
