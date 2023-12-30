@@ -9,6 +9,7 @@ function PacketManager() constructor{
 		self._RecievedPacketRegistry = ds_map_create();
 	}
 	
+	//TODO Properly destroy all the packets from each map.
 	Destroy = function(){
 		self.ClearRegistry();
 		ds_map_destroy(self._SentPacketRegistryData);
@@ -20,8 +21,17 @@ function PacketManager() constructor{
 	}
 	
 	//TODO Return Number
-	CreateLocalPacket = function(){
-	
+	CreateLocalPacket = function(_PacketType){
+		switch(_PacketType){
+			case PeerFrameworkPacketTypes.SimplePacket:
+			break;
+			
+			case PeerFrameworkPacketTypes.ComplexPacket:
+			break;
+			
+			case PeerFrameworkPacketTypes.TCP:
+			break;
+		}
 	}
 	
 	GeneratePacketID = function(){
@@ -48,7 +58,9 @@ function PacketManager() constructor{
 	}
 	
 	//TODO Returns Packet
-	GetPacketFromRegistry = function(){}
+	GetPacketFromRegistry = function(){
+	
+	}
 	
 	//TODO
 	RemovePacketFromSentRegistryData = function(){}

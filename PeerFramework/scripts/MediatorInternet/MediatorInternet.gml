@@ -1,14 +1,24 @@
 function InternetMediator(): Mediator() constructor{
-	_CurrentConfiguration = new PeerConfiguration(PeerConfigurationNetworkType.Internet,PeerConfigurationTickRate.DesktopTick,
-		PeerConfigurationNetDev.Development, PeerConfigurationIpVersion.IPv4);
+	_CurrentConfiguration = -1;
 	_CurrentProtocolManager = new ProtocolManager(self._CurrentConfiguration.GetConfTickRate,self);
 	
-	self._init = function(){
+	Initialize = function(){
+		self._CurrentConfiguration = new PeerConfiguration(PeerConfigurationNetworkType.Internet,PeerConfigurationTickRate.DesktopTick,
+			PeerConfigurationNetDev.Development, PeerConfigurationIpVersion.IPv4);
 		self._CurrentProtocolManager.InitializeProtocolManager();
+		
+		
 		logger(LOGLEVEL.DEBUG,"Internet Mediator Initialized!", "PeerFrameworkInternetMediator");
 	}
 	
-	self._notify = function(){
+	Destroy = function(){
+		
+		delete _CurrentConfiguration;
+		_CurrentConfiguration = -1;
+	}
+	
+	
+	Notify = function(){
 		
 	}
 }

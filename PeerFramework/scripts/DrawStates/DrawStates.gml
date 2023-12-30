@@ -2,6 +2,7 @@ function MachineState(MyMachine) constructor{
 	_Machine = MyMachine;
 	_CurrentWindow = "N/A";
 	Draw =  function(){}
+	Step = function(){}
 }
 
 function MachineStateConfiguration(MyMachine):MachineState(MyMachine) constructor{
@@ -17,4 +18,8 @@ function MachineStateConfiguration(MyMachine):MachineState(MyMachine) constructo
 		draw_text(10,190,$"Connection Timeout: {self._ConfigurationData._ConfGMLNativeConnectionTimeout}");
 		draw_text(10,210,$"Use Non Blocking Socket : {self._ConfigurationData._ConfGMLNativeUseNonBlockingSocket}");
 	}
+}
+
+function MachineStateCurrentCommunicationInterfaces(MyMachine):MachineState(MyMachine) constructor{
+	
 }

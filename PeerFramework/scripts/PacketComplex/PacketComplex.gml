@@ -10,6 +10,7 @@ function PacketComplex(PacketId, NumberOfDestinations, DestinationStations = [],
 		for(var i = self._NumberOfDestinations; i < self._NumberOfDestinations; i++){
 			ds_map_add(self._RecievedNoticeMap,DestinationStations[i],0);
 		}
+		
 		logger(LOGLEVEL.DEBUG,"A complex packet has been initialized!",$"PeerFrameworkPacketComplex:{self._PacketId}");
 	}
 	

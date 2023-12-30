@@ -69,6 +69,11 @@
     {"name":"Rooms","order":10,"path":"folders/Rooms.yy",},
     {"name":"Sprites","order":1,"path":"folders/Sprites.yy",},
     {"name":"Debug UI","order":6,"path":"folders/PeerFramework/Debug UI.yy",},
+    {"name":"Types","order":3,"path":"folders/PeerFramework/Packets/Types.yy",},
+    {"name":"Communication","order":7,"path":"folders/PeerFramework/Communication.yy",},
+    {"name":"Interface","order":1,"path":"folders/PeerFramework/Communication/Interface.yy",},
+    {"name":"TCP","order":2,"path":"folders/PeerFramework/Communication/TCP.yy",},
+    {"name":"UDP","order":3,"path":"folders/PeerFramework/Communication/UDP.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"__input_exception_handler","order":14,"path":"scripts/__input_exception_handler/__input_exception_handler.yy",},

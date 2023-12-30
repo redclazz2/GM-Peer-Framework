@@ -19,8 +19,8 @@ function Machine(PeerFrameworkDataSource) constructor{
 	
 	Draw = function(){
 		draw_text(10,10,"Peer Framework");
-		draw_text(10,30,"<- A | D ->");
-		draw_text(10,50,$"Current Page: {self._CurrentStatus._CurrentWindow}");
+		draw_text(10,30,$"Current Page: {self._CurrentStatus._CurrentWindow}");
+		draw_text(10,50,"<- A | D ->");
 		_CurrentStatus.Draw();
 	}
 }
