@@ -3,7 +3,7 @@ function PeerConfiguration(NetType,TickRate,NetDev,IpVersion,ConnectionTimeout =
 	_ConfTickRate = TickRate;
 	_ConfNetDev = NetDev;
 	_ConfIpVersion = IpVersion;
-	_ConfFrameworkVersion = 0;
+	_ConfFrameworkVersion = 1;
 	_ConfGMLNativeConnectionTimeout = ConnectionTimeout;
 	_ConfGMLNativeUseNonBlockingSocket = NonBlockingSocket;
 	
