@@ -6,6 +6,6 @@
   "isDnD": false,
   "parent": {
     "name": "14  Virtual Buttons",
-    "path": "folders/Extensions/InputManager/Input/14  Virtual Buttons.yy",
+    "path": "folders/Extensions/Input/14  Virtual Buttons.yy",
   },
 }

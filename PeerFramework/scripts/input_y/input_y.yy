@@ -6,6 +6,6 @@
   "isDnD": false,
   "parent": {
     "name": "02  2D Checkers",
-    "path": "folders/Extensions/InputManager/Input/02  2D Checkers.yy",
+    "path": "folders/Extensions/Input/02  2D Checkers.yy",
   },
 }

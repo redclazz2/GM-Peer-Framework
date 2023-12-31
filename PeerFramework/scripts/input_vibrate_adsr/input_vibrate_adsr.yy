@@ -6,6 +6,6 @@
   "isDnD": false,
   "parent": {
     "name": "19  Vibration",
-    "path": "folders/Extensions/InputManager/Input/19  Vibration.yy",
+    "path": "folders/Extensions/Input/19  Vibration.yy",
   },
 }

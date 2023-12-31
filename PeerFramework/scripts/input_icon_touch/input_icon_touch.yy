@@ -6,6 +6,6 @@
   "isDnD": false,
   "parent": {
     "name": "Icons",
-    "path": "folders/Extensions/InputManager/Input/(System)/Icons.yy",
+    "path": "folders/Extensions/Input/(System)/Icons.yy",
   },
 }

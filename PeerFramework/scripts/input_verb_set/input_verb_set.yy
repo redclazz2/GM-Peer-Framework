@@ -6,6 +6,6 @@
   "isDnD": false,
   "parent": {
     "name": "04  Further Verb Functions",
-    "path": "folders/Extensions/InputManager/Input/04  Further Verb Functions.yy",
+    "path": "folders/Extensions/Input/04  Further Verb Functions.yy",
   },
 }

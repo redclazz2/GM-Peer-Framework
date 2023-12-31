@@ -6,6 +6,6 @@
   "isDnD": false,
   "parent": {
     "name": "26  Keyboard (Direct)",
-    "path": "folders/Extensions/InputManager/Input/26  Keyboard (Direct).yy",
+    "path": "folders/Extensions/Input/26  Keyboard (Direct).yy",
   },
 }

@@ -6,6 +6,6 @@
   "isDnD": false,
   "parent": {
     "name": "01  Checking Verbs",
-    "path": "folders/Extensions/InputManager/Input/01  Checking Verbs.yy",
+    "path": "folders/Extensions/Input/01  Checking Verbs.yy",
   },
 }

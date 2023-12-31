@@ -6,6 +6,6 @@
   "isDnD": false,
   "parent": {
     "name": "Initialization",
-    "path": "folders/Extensions/InputManager/Input/(System)/Initialization.yy",
+    "path": "folders/Extensions/Input/(System)/Initialization.yy",
   },
 }

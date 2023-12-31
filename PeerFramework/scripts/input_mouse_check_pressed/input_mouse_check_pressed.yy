@@ -6,6 +6,6 @@
   "isDnD": false,
   "parent": {
     "name": "24  Mouse (Direct)",
-    "path": "folders/Extensions/InputManager/Input/24  Mouse (Direct).yy",
+    "path": "folders/Extensions/Input/24  Mouse (Direct).yy",
   },
 }

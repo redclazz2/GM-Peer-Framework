@@ -6,6 +6,6 @@
   "isDnD": false,
   "parent": {
     "name": "09  Cursor",
-    "path": "folders/Extensions/InputManager/Input/09  Cursor.yy",
+    "path": "folders/Extensions/Input/09  Cursor.yy",
   },
 }

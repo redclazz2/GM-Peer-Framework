@@ -6,6 +6,6 @@
   "isDnD": false,
   "parent": {
     "name": "13  Exporting and Importing",
-    "path": "folders/Extensions/InputManager/Input/13  Exporting and Importing.yy",
+    "path": "folders/Extensions/Input/13  Exporting and Importing.yy",
   },
 }

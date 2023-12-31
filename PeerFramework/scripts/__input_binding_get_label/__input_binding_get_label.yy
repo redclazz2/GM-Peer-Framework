@@ -6,6 +6,6 @@
   "isDnD": false,
   "parent": {
     "name": "(System)",
-    "path": "folders/Extensions/InputManager/Input/(System).yy",
+    "path": "folders/Extensions/Input/(System).yy",
   },
 }

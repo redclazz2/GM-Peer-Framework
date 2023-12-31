@@ -5,7 +5,7 @@ function ProtocolManager(TickRate,MyMediator) constructor{
 	_InternalProtocolClock = 0;
 	_TickRate = TickRate;
 	
-	InitializeProtocolManager = function(){
+	Create = function(){
 		self._InternalProtocolClock = time_source_create(time_source_game,_TickRate,time_source_units_frames,self.NotifySubscribersEngineTick,[],-1);
 		time_source_start(self._InternalProtocolClock);
 		logger(LOGLEVEL.DEBUG,"Protocol Manager Initialized!", "PeerFrameworkProtocolManager");

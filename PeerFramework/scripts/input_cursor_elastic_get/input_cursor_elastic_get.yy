@@ -6,6 +6,6 @@
   "isDnD": false,
   "parent": {
     "name": "10  Cursor Control",
-    "path": "folders/Extensions/InputManager/Input/10  Cursor Control.yy",
+    "path": "folders/Extensions/Input/10  Cursor Control.yy",
   },
 }

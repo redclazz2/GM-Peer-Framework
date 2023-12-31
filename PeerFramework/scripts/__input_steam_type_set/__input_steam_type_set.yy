@@ -6,6 +6,6 @@
   "isDnD": false,
   "parent": {
     "name": "Gamepads and Steam",
-    "path": "folders/Extensions/InputManager/Input/(System)/Gamepads and Steam.yy",
+    "path": "folders/Extensions/Input/(System)/Gamepads and Steam.yy",
   },
 }

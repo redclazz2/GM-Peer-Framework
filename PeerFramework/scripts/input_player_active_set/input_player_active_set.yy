@@ -6,6 +6,6 @@
   "isDnD": false,
   "parent": {
     "name": "15  Players",
-    "path": "folders/Extensions/InputManager/Input/15  Players.yy",
+    "path": "folders/Extensions/Input/15  Players.yy",
   },
 }

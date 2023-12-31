@@ -6,6 +6,6 @@
   "isDnD": false,
   "parent": {
     "name": "06  Binding Access",
-    "path": "folders/Extensions/InputManager/Input/06  Binding Access.yy",
+    "path": "folders/Extensions/Input/06  Binding Access.yy",
   },
 }

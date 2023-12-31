@@ -6,6 +6,6 @@
   "isDnD": false,
   "parent": {
     "name": "25  Gamepads (Direct)",
-    "path": "folders/Extensions/InputManager/Input/25  Gamepads (Direct).yy",
+    "path": "folders/Extensions/Input/25  Gamepads (Direct).yy",
   },
 }

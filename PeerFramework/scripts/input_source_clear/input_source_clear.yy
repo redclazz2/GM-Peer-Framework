@@ -6,6 +6,6 @@
   "isDnD": false,
   "parent": {
     "name": "18  Sources",
-    "path": "folders/Extensions/InputManager/Input/18  Sources.yy",
+    "path": "folders/Extensions/Input/18  Sources.yy",
   },
 }

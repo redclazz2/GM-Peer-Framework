@@ -6,6 +6,6 @@
   "isDnD": false,
   "parent": {
     "name": "16  Profiles",
-    "path": "folders/Extensions/InputManager/Input/16  Profiles.yy",
+    "path": "folders/Extensions/Input/16  Profiles.yy",
   },
 }

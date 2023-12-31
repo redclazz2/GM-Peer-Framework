@@ -6,6 +6,6 @@
   "isDnD": false,
   "parent": {
     "name": "Gamepad Tester",
-    "path": "folders/Extensions/InputManager/Input/(System)/Gamepad Tester.yy",
+    "path": "folders/Extensions/Input/(System)/Gamepad Tester.yy",
   },
 }

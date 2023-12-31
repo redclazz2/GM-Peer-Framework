@@ -6,6 +6,6 @@
   "isDnD": false,
   "parent": {
     "name": "Ticks",
-    "path": "folders/Extensions/InputManager/Input/(System)/Ticks.yy",
+    "path": "folders/Extensions/Input/(System)/Ticks.yy",
   },
 }

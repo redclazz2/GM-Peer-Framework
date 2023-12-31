@@ -1,13 +1,17 @@
 function InternetMediator(): Mediator() constructor{
 	_CurrentConfiguration = -1;
 	_CurrentProtocolManager = -1;
+	_CommunicationTCP = -1;
 	
-	Initialize = function(){
+	Create = function(){
 		self._CurrentConfiguration = new PeerConfiguration(PeerConfigurationNetworkType.Internet,PeerConfigurationTickRate.DesktopTick,
 			PeerConfigurationNetDev.Development, PeerConfigurationIpVersion.IPv4);
 		
 		self._CurrentProtocolManager = new ProtocolManager(self._CurrentConfiguration.GetConfTickRate,self);
-		self._CurrentProtocolManager.InitializeProtocolManager();
+		self._CurrentProtocolManager.Create();
+		
+		self._CommunicationTCP =  new InterfaceTCP(8056,"127.0.0.1",1,4000,self);
+		self._CommunicationTCP.Create();
 		
 		logger(LOGLEVEL.DEBUG,"Internet Mediator Initialized!", "PeerFrameworkInternetMediator");
 	}
