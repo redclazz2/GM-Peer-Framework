@@ -20,6 +20,10 @@ function MachineStateConfiguration(MyMachine):MachineState(MyMachine) constructo
 	}
 }
 
-function MachineStateCurrentCommunicationInterfaces(MyMachine):MachineState(MyMachine) constructor{
+function MachineStateTCPInterface(MyMachine):MachineState(MyMachine) constructor{
+	_CurrentWindow = "TCP Interface";
 	
+	Draw = function(){
+		draw_text(10,90,$"TCP PAGE!!!!!!!!!!!!");
+	}
 }
