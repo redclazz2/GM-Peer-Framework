@@ -1,1 +1,1 @@
-DebugUi.Step();
+self.PeerFramework._DebugUI.Step();

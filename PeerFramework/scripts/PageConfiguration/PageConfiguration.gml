@@ -1,11 +1,4 @@
-function MachineState(MyMachine) constructor{
-	_Machine = MyMachine;
-	_CurrentWindow = "N/A";
-	Draw =  function(){}
-	Step = function(){}
-}
-
-function MachineStateConfiguration(MyMachine):MachineState(MyMachine) constructor{
+function MachineStateConfiguration(MyMachine):MachineDebugUIState(MyMachine) constructor{
 	_ConfigurationData =  self._Machine._PeerFrameworkData._CurrentConfiguration;
 	_CurrentWindow = "Configuration";
 	
@@ -17,13 +10,5 @@ function MachineStateConfiguration(MyMachine):MachineState(MyMachine) constructo
 		draw_text(10,170,$"Tick Rate: {self._ConfigurationData._ConfTickRate}. (2 -> 30Hz, 4 -> 15Hz)");
 		draw_text(10,190,$"Connection Timeout: {self._ConfigurationData._ConfGMLNativeConnectionTimeout}");
 		draw_text(10,210,$"Use Non Blocking Socket : {self._ConfigurationData._ConfGMLNativeUseNonBlockingSocket}");
-	}
-}
-
-function MachineStateTCPInterface(MyMachine):MachineState(MyMachine) constructor{
-	_CurrentWindow = "TCP Interface";
-	
-	Draw = function(){
-		draw_text(10,90,$"TCP PAGE!!!!!!!!!!!!");
 	}
 }

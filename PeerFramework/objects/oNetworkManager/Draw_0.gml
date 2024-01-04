@@ -1,1 +1,1 @@
-DebugUi.Draw();
+self.PeerFramework._DebugUI.Draw();

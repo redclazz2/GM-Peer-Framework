@@ -1,11 +1,11 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "Machine",
+  "name": "PageInteface",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {
-    "name": "Debug UI",
-    "path": "folders/PeerFramework/Debug UI.yy",
+    "name": "_Interface",
+    "path": "folders/PeerFramework/Debug UI/Pages/_Interface.yy",
   },
 }

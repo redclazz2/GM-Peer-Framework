@@ -3,6 +3,7 @@ function InterfaceTCP(MyPort,MyIp,BlockingSocket,Timeout,MyMediator):Communicati
 	_UseNonBlockingSocket = BlockingSocket;
 	_ConnectionTimeout = Timeout;
 	_InterfaceTCPBuffer = -1;
+	_InternalDebugStatusKey = InterfaceTCPStatus.NotStarted;
 	
 	Create = function(){
 		network_set_config(network_config_connect_timeout,self._ConnectionTimeout);
@@ -12,19 +13,17 @@ function InterfaceTCP(MyPort,MyIp,BlockingSocket,Timeout,MyMediator):Communicati
 		logger(LOGLEVEL.DEBUG,"TCP Communication Interface Created!","PeerFrameworkTCPCommunicationInterface");
 	}
 	
-	Destroy = function(){
+	Destroy = function(){		
 		network_destroy(self._Socket);
 		self._Socket = -1;
 		buffer_delete(self._InterfaceTCPBuffer);
+		logger(LOGLEVEL.DEBUG,"Destroy Function Exec!","PeerFrameworkTCPCommunicationInterface");
 	}
 	
 	InitializeTCPCommunication = function(){
-		var connection = network_connect_raw(self._Socket,self._SocketGMLNativeRemoteIp,self._SocketGMLNativePort);
-		
-		if(connection < 0){
-			logger(LOGLEVEL.ERROR,"Unable to connect to TCP server!","PeerFrameworkTCPCommunicationInterface");
-		}else{
-			logger(LOGLEVEL.ERROR,"Connection Stablished with TCP server!","PeerFrameworkTCPCommunicationInterface");
-		}	
+		logger(LOGLEVEL.INFO,"Attempting TCP Communication to Server ...","PeerFrameworkTCPCommunicationInterface");
+		self._InternalDebugStatusKey = InterfaceTCPStatus.Attempt;
+		self._Mediator.Notify(MediatorNotificationKey.TCP,new NotificationData(TCPNotificationKey.Attempt));
+		network_connect_raw_async(self._Socket,self._SocketGMLNativeRemoteIp,self._SocketGMLNativePort);	
 	}
 }
