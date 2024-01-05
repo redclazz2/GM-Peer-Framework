@@ -7,6 +7,5 @@ function CommunicationInterface(Port,MyMediator) constructor{
 	Create = function(){};
 	Destroy = function(){};
 	InitializeCommunicationInterface = function(){}
-	HandleIncomeNetworkData = function(){
-	}	
+	HandleIncomeNetworkData = function(){}	
 }

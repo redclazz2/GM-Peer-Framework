@@ -27,7 +27,9 @@ function SubPageTCPConnected(MyMainPage):SubPageTCP(MyMainPage) constructor{
 	_CurrentSubPageName = "Connected";
 	
 	Draw = function(){
-		draw_text(10,170,"Press ENTER to destroy TCP connection!");
+		draw_text(10,170,$"TCP Application Status: {self._MainPage._TCPData._ApplicationAuthorizationStatus}");	
+		draw_text(10,190,"-------------------------------------");
+		draw_text(10,210,"Press ENTER to destroy TCP connection!");
 	}
 	
 	Step = function(){

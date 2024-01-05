@@ -8,8 +8,11 @@ try{
 			var buffer = ds_map_find_value(async_load,"buffer"),
 			    IncomingIP = ds_map_find_value(async_load,"ip"),
 			    IncomingPort = ds_map_find_value(async_load,"port");
-			
-			PeerFramework.Notify(MediatorNotificationKey.IncomingNetworkData,new NotificationData(-1,[IncomingIP,IncomingPort,buffer]));
+				
+			buffer_seek(buffer,buffer_seek_start,0);
+			var Identification = buffer_read(buffer,buffer_u16);
+		
+			PeerFramework.Notify(MediatorNotificationKey.IncomingNetworkData,new NotificationData(Identification,[IncomingIP,IncomingPort,buffer]));
 		break;
 	
 		case network_type_non_blocking_connect:
@@ -19,5 +22,5 @@ try{
 		break;
 	}
 }catch(e){
-	logger(LOGLEVEL.ERROR,$"Fatal error when reading incoming network event: {e.message}","Async Networking: GML Event");
+	logger(LOGLEVEL.ERROR,$"Error when reading incoming network event. Is message correctly formatted?: {e.longMessage}","Async Networking: GML Event");
 }

@@ -27,4 +27,16 @@ function InterfaceTCP(MyPort,MyIp,BlockingSocket,Timeout,MyMediator):Communicati
 		self._Mediator.Notify(MediatorNotificationKey.TCP,new NotificationData(TCPNotificationKey.Attempt));
 		network_connect_raw_async(self._Socket,self._SocketGMLNativeRemoteIp,self._SocketGMLNativePort);	
 	}
+	
+	HandleIncomingNetworkData = function(_Ip,_Port,_Buffer){
+		var _IncomingTCPMessageType = buffer_read(_Buffer,buffer_u16);
+		
+		switch(_IncomingTCPMessageType){
+			case TCPMessageTypes.InitialStationDataReport:
+				logger(LOGLEVEL.INFO,"Received initial station data report from server!","PeerFrameworkTCPCommunicationInterface");
+				self.__CurrentIncomeNetworkDataInterpreter = new InterpreterTCPInitialStationDataReport(self);
+				self.__CurrentIncomeNetworkDataInterpreter.HandleIncomingNetworkData(_Ip,_Port,_Buffer);
+			break;
+		}
+	}
 }

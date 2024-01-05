@@ -1,12 +1,12 @@
 function PacketManager() constructor{
 	_SentPacketRegistryData = -1;
 	_SentPacketRegistryId = -1;
-	_RecievedPacketRegistry = -1;
+	_ReceivedPacketRegistry = -1;
 	
 	InitializePacketManager = function(){
 		self._SentPacketRegistryData = ds_map_create();
 		self._SentPacketRegistryId = ds_map_create();
-		self._RecievedPacketRegistry = ds_map_create();
+		self._ReceivedPacketRegistry = ds_map_create();
 	}
 	
 	//TODO Properly destroy all the packets from each map.
@@ -14,10 +14,10 @@ function PacketManager() constructor{
 		self.ClearRegistry();
 		ds_map_destroy(self._SentPacketRegistryData);
 		ds_map_destroy(self._SentPacketRegistryId);
-		ds_map_destroy(self._RecievedPacketRegistry);
+		ds_map_destroy(self._ReceivedPacketRegistry);
 		self._SentPacketRegistryData = -1;
 		self._SentPacketRegistryId = -1;
-		self._RecievedPacketRegistry = -1;
+		self._ReceivedPacketRegistry = -1;
 	}
 	
 	//TODO Return Number
@@ -46,7 +46,7 @@ function PacketManager() constructor{
 		*/
 		var _intended = irandom($FFFFFFFE);
 		
-		while(ds_map_exists(self._SentPacketRegistryId,_intended) || ds_map_exists(self._RecievedPacketRegistry,_intended)){
+		while(ds_map_exists(self._SentPacketRegistryId,_intended) || ds_map_exists(self._ReceivedPacketRegistry,_intended)){
 			_intended = irandom($FFFFFFFE);
 		}
 		
@@ -54,7 +54,7 @@ function PacketManager() constructor{
 	}
 	
 	//TODO
-	RegisterRecievedPacket = function(){
+	RegisterReceivedPacket = function(){
 	}
 	
 	//TODO Returns Packet

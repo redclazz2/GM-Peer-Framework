@@ -5,7 +5,7 @@
   "isCompatibility": false,
   "isDnD": false,
   "parent": {
-    "name": "Interface",
-    "path": "folders/PeerFramework/Communication/Interface.yy",
+    "name": "Interfaces",
+    "path": "folders/PeerFramework/Communication/Interfaces.yy",
   },
 }

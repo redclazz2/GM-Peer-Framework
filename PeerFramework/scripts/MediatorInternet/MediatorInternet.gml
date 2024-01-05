@@ -87,7 +87,11 @@ function InternetMediator(): Mediator() constructor{
 	HandleIncomingNetworkData = function(_data){
 		switch(_data._Identification){
 			case IncomingNetworkType.TCP:
-			
+				var _IncomingIP = _data._Data[0],
+					_IncomingPort = _data._Data[1],
+					_IncomingBuffer = _data._Data[2];
+				show_debug_message(_IncomingBuffer);
+				self._CommunicationTCP.HandleIncomingNetworkData(_IncomingIP,_IncomingPort,_IncomingBuffer);
 			break;
 			
 			case IncomingNetworkType.UDP:
