@@ -11,7 +11,7 @@ function InterfaceTCP(MyPort,MyIp,BlockingSocket,Timeout,MyMediator):Communicati
 		network_set_config(network_connect_nonblocking,self._UseNonBlockingSocket);
 		self._Socket = network_create_socket(network_socket_tcp);
 		self._InterfaceTCPBuffer = buffer_create(256,buffer_grow,1);
-		logger(LOGLEVEL.DEBUG,"TCP Communication Interface Created!","PeerFrameworkTCPCommunicationInterface");
+		logger(LOGLEVEL.DEBUG,"TCP Communication Interface Initialized!","PeerFrameworkTCPCommunicationInterface");
 	}
 	
 	Destroy = function(){		

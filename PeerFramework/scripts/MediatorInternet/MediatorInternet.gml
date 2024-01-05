@@ -2,6 +2,7 @@ function InternetMediator(): Mediator() constructor{
 	_CurrentConfiguration = -1;
 	_CurrentProtocolManager = -1;
 	_CommunicationTCP = -1;
+	_ServiceStation = -1;
 	_DebugUI = -1;
 	
 	Create = function(){
@@ -12,6 +13,9 @@ function InternetMediator(): Mediator() constructor{
 		self._CurrentProtocolManager.Create();
 		
 		self.CreateTCPInterface();
+		
+		self._ServiceStation = new ServiceStation();
+		self._ServiceStation.Create();
 		
 		self._DebugUI = new DebugUIMachine(self);
 		self._DebugUI.Create();
@@ -76,8 +80,20 @@ function InternetMediator(): Mediator() constructor{
 			break;
 			
 			case TCPNotificationKey.Failed:
+				//When a UI exists this can trigger a pop up
 				logger(LOGLEVEL.ERROR,"Unable to connect to TCP server!","PeerFrameworkTCPCommunicationInterface");
 				self._CommunicationTCP._InternalDebugStatusKey = InterfaceTCPProtocolStatus.Failed;
+			break;
+			
+			case TCPNotificationKey.ApplicationAccepted:
+				logger(LOGLEVEL.ERROR,"The main server authorized the connection!","PeerFrameworkTCPCommunicationInterface");
+				self._ServiceStation.RegisterLocalStation(_data._Data[2],_data._Data[1],_data._Data[0]);
+				
+			break;
+			
+			case TCPNotificationKey.ApplicationRejected:
+			//When a UI exists this can trigger a pop up
+				logger(LOGLEVEL.ERROR,"The main server rejected the connection!","PeerFrameworkTCPCommunicationInterface");
 			break;
 		}
 		

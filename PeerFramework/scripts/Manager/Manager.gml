@@ -2,7 +2,7 @@ function DebugUIMachine(PeerFrameworkDataSource) constructor{
 	_PeerFrameworkData = PeerFrameworkDataSource;
 	_CurrentStatus = -1;
 	_CurrentPage = 0;
-	_MaxPageIndex = 1;
+	_MaxPageIndex = 2;
 	_DrawDebugInterface = true;
 	
 	ChangeStatus =  function(_MenuChange){
@@ -22,6 +22,11 @@ function DebugUIMachine(PeerFrameworkDataSource) constructor{
 			case 1:
 				self._CurrentStatus = new MachineStateTCPInterface(self);
 				self._CurrentStatus.ChangeTCPStatus();
+			break;
+			
+			case 2:
+				self._CurrentStatus = new MachineStateStationService(self);
+				self._CurrentStatus.ChangeStatus();
 			break;
 		}
 	}

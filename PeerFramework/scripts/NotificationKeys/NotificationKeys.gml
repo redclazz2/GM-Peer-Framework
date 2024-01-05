@@ -13,6 +13,8 @@ enum TCPNotificationKey{
 	Attempt = 0,
 	Connected = 1,
 	Failed = 2,
+	ApplicationAccepted = 3,
+	ApplicationRejected = 4,
 }
 
 enum IncomingNetworkType{

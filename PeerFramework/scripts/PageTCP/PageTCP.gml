@@ -1,7 +1,7 @@
 function MachineStateTCPInterface(MyMachine):MachineDebugUIState(MyMachine) constructor{
 	_TCPData = self._Machine._PeerFrameworkData._CommunicationTCP;
 	_CurrentWindow = "TCP Interface";
-	_CurrentStatus = new SubPageTCP(self); 
+	_CurrentStatus = new SubPage(self); 
 		
 	ChangeTCPStatus = function(){
 		switch(self._TCPData._InternalDebugStatusKey){

@@ -7,9 +7,8 @@ function InterpreterTCPInitialStationDataReport(Interface):NetworkDataInterprete
 			ReceivedStationConstantId = buffer_read(_Buffer,buffer_u16);
 			
 		self._CommunicationInterface._ApplicationAuthorizationStatus = ReceivedApplicationStatus;
-		
-		logger(LOGLEVEL.INFO,$"Ip received from server: {ReceivedStationIPAddress}","TCP Interpreter");
-		logger(LOGLEVEL.INFO,$"Port received from server: {ReceivedStationTCPPort}","TCP Interpreter");
-		logger(LOGLEVEL.INFO,$"ConstantId received from server: {ReceivedStationConstantId}","TCP Interpreter");
+		self._CommunicationInterface._Mediator.Notify(MediatorNotificationKey.TCP,
+			new NotificationData(ReceivedApplicationStatus == InterfaceTCPApplicationStatus.ConnectionAccepted ? TCPNotificationKey.ApplicationAccepted : TCPNotificationKey.ApplicationRejected,
+				[ReceivedStationIPAddress,ReceivedStationTCPPort,ReceivedStationConstantId]));
 	}
 }
