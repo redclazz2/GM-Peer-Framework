@@ -42,6 +42,10 @@ function InternetMediator(): Mediator() constructor{
 			case MediatorNotificationKey.TCP:
 				self.HandleTCPNotification(_data);
 			break;
+			
+			case MediatorNotificationKey.IncomingNetworkData:
+				self.HandleIncomingNetworkData(_data);
+			break;
 		}
 	}
 	
@@ -68,15 +72,27 @@ function InternetMediator(): Mediator() constructor{
 			
 			case TCPNotificationKey.Connected:
 				logger(LOGLEVEL.DEBUG,"Connection Stablished with TCP server!","PeerFrameworkTCPCommunicationInterface");
-				self._CommunicationTCP._InternalDebugStatusKey = InterfaceTCPStatus.Connected;
+				self._CommunicationTCP._InternalDebugStatusKey = InterfaceTCPProtocolStatus.Connected;
 			break;
 			
 			case TCPNotificationKey.Failed:
 				logger(LOGLEVEL.ERROR,"Unable to connect to TCP server!","PeerFrameworkTCPCommunicationInterface");
-				self._CommunicationTCP._InternalDebugStatusKey = InterfaceTCPStatus.Failed;
+				self._CommunicationTCP._InternalDebugStatusKey = InterfaceTCPProtocolStatus.Failed;
 			break;
 		}
 		
 		if(self._DebugUI._CurrentPage == 1) self._DebugUI._CurrentStatus.ChangeTCPStatus();
+	}
+	
+	HandleIncomingNetworkData = function(_data){
+		switch(_data._Identification){
+			case IncomingNetworkType.TCP:
+			
+			break;
+			
+			case IncomingNetworkType.UDP:
+			
+			break;
+		}
 	}
 }

@@ -1,6 +1,7 @@
 enum MediatorNotificationKey{
 	DebugUI = 0,
 	TCP = 1,
+	IncomingNetworkData = 2,
 }
 
 enum DebugUINotificationKey{
@@ -12,4 +13,9 @@ enum TCPNotificationKey{
 	Attempt = 0,
 	Connected = 1,
 	Failed = 2,
+}
+
+enum IncomingNetworkType{
+	TCP = 0,
+	UDP = 1,
 }

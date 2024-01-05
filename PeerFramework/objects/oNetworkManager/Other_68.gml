@@ -5,9 +5,11 @@ var net_event_type = ds_map_find_value(async_load,"type");
 try{
 	switch(net_event_type){
 		case network_type_data:
-			var buffer = ds_map_find_value(async_load,"buffer");
-			buffer_seek(buffer,buffer_seek_start,0);
-			//handlepacketclient(buffer,buffer_read(buffer, buffer_s16),socket,ds_map_find_value(async_load,"ip"),ds_map_find_value(async_load,"port"));
+			var buffer = ds_map_find_value(async_load,"buffer"),
+			    IncomingIP = ds_map_find_value(async_load,"ip"),
+			    IncomingPort = ds_map_find_value(async_load,"port");
+			
+			PeerFramework.Notify(MediatorNotificationKey.IncomingNetworkData,new NotificationData(-1,[IncomingIP,IncomingPort,buffer]));
 		break;
 	
 		case network_type_non_blocking_connect:

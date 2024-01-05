@@ -1,11 +1,11 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "TCPStatus",
+  "name": "StationInformation",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {
-    "name": "TCP",
-    "path": "folders/PeerFramework/Communication/TCP.yy",
+    "name": "StationData",
+    "path": "folders/PeerFramework/StationData.yy",
   },
 }

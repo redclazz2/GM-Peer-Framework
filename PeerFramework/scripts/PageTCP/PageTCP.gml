@@ -5,19 +5,19 @@ function MachineStateTCPInterface(MyMachine):MachineDebugUIState(MyMachine) cons
 		
 	ChangeTCPStatus = function(){
 		switch(self._TCPData._InternalDebugStatusKey){
-			case InterfaceTCPStatus.Attempt:
+			case InterfaceTCPProtocolStatus.Attempt:
 				self._CurrentStatus = new SubPageTCPAttempt(self);
 			break;
 			
-			case InterfaceTCPStatus.NotStarted:
+			case InterfaceTCPProtocolStatus.NotStarted:
 				self._CurrentStatus = new SubPageTCPNotStarted(self);
 			break;
 			
-			case InterfaceTCPStatus.Connected:
+			case InterfaceTCPProtocolStatus.Connected:
 				self._CurrentStatus = new SubPageTCPConnected(self);
 			break;
 			
-			case InterfaceTCPStatus.Failed:
+			case InterfaceTCPProtocolStatus.Failed:
 				self._CurrentStatus = new SubPageTCPFailed(self);
 			break;
 		}	
