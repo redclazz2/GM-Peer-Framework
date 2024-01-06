@@ -59,6 +59,7 @@
     {"name":"TCP","order":2,"path":"folders/PeerFramework/Communication/TCP.yy",},
     {"name":"Interpreters","order":3,"path":"folders/PeerFramework/Communication/TCP/Interpreters.yy",},
     {"name":"UDP","order":3,"path":"folders/PeerFramework/Communication/UDP.yy",},
+    {"name":"Writers","order":2,"path":"folders/PeerFramework/Communication/UDP/Writers.yy",},
     {"name":"Configuration","order":2,"path":"folders/PeerFramework/Configuration.yy",},
     {"name":"Debug UI","order":6,"path":"folders/PeerFramework/Debug UI.yy",},
     {"name":"Pages","order":2,"path":"folders/PeerFramework/Debug UI/Pages.yy",},
@@ -84,7 +85,6 @@
     {"name":"StationData","order":8,"path":"folders/PeerFramework/StationData.yy",},
     {"name":"Enums","order":3,"path":"folders/PeerFramework/StationData/Enums.yy",},
     {"name":"Rooms","order":10,"path":"folders/Rooms.yy",},
-    {"name":"Writers","order":2,"path":"folders/PeerFramework/Communication/UDP/Writers.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"__input_exception_handler","order":14,"path":"scripts/__input_exception_handler/__input_exception_handler.yy",},
