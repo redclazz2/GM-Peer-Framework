@@ -8,6 +8,8 @@ enum MediatorNotificationKey{
 enum DebugUINotificationKey{
 	TCPStart = 0,
 	TCPDestroy = 1,
+	UDPStart = 2,
+	UDPDestroy = 3,
 }
 
 enum TCPNotificationKey{
@@ -24,6 +26,6 @@ enum IncomingNetworkType{
 }
 
 enum UDPNotificationKey{
-	SocketCreationOk,
-	SocketCreationFailed
+	SocketCreationOk = 0,
+	SocketCreationFailed = 1
 }

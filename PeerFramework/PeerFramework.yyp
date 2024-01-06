@@ -96,7 +96,6 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"StationData","folderPath":"folders/PeerFramework/StationData.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Enums","folderPath":"folders/PeerFramework/StationData/Enums.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Rooms","folderPath":"folders/Rooms.yy",},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Sprites","folderPath":"folders/Sprites.yy",},
   ],
   "IncludedFiles": [
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"controllerblacklist.csv","CopyToMask":-1,"filePath":"datafiles",},

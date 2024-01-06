@@ -14,8 +14,7 @@ function InternetMediator(): Mediator() constructor{
 		self._CurrentProtocolManager.Create();
 		
 		self.CreateTCPInterface();
-		
-		self._CommunicationUDP = new InterfaceUDP(14,self);
+		self.CreateUDPInterface();
 		
 		self._ServiceStation = new ServiceStation();
 		self._ServiceStation.Create();
@@ -24,21 +23,6 @@ function InternetMediator(): Mediator() constructor{
 		self._DebugUI.Create();
 		
 		logger(LOGLEVEL.DEBUG,"Internet Mediator Initialized!", "PeerFrameworkInternetMediator");
-	}
-	
-	CreateTCPInterface = function(){
-		self._CommunicationTCP =  new InterfaceTCP(8056,"127.0.0.1",self._CurrentConfiguration.GetConfGMLNativeUseNonBlockingSocket,self._CurrentConfiguration.GetConfGMLNativeConnectionTimeout(),self);
-		self._CommunicationTCP.Create();
-	}
-	
-	DestroyTCPInterface = function(){
-		self._CommunicationTCP.Destroy();
-		delete self._CommunicationTCP;
-		self.CreateTCPInterface();
-				
-		self._ServiceStation.UnregisterAll();
-		self._CommunicationUDP.Destroy();
-		if(self._DebugUI._CurrentPage == 1 || self._DebugUI._CurrentPage == 3) self._DebugUI._CurrentStatus.ChangeStatus();
 	}
 	
 	Destroy = function(){
@@ -56,6 +40,41 @@ function InternetMediator(): Mediator() constructor{
 		self._ServiceStation.Destroy();
 		delete self._ServiceStation;
 		self._ServiceStation = -1;
+	}
+	
+	CreateTCPInterface = function(){
+		self._CommunicationTCP =  new InterfaceTCP(8056,"127.0.0.1",self._CurrentConfiguration.GetConfGMLNativeUseNonBlockingSocket,self._CurrentConfiguration.GetConfGMLNativeConnectionTimeout(),self);
+		self._CommunicationTCP.Create();
+	}
+	
+	DestroyTCPInterface = function(){
+		self._CommunicationTCP.Destroy();
+		delete self._CommunicationTCP;
+		self.CreateTCPInterface();	
+		
+		self.DestroyUDPInterface();
+		self._ServiceStation.UnregisterAll();
+		if(self._DebugUI._CurrentPage == 1 || self._DebugUI._CurrentPage == 3) self._DebugUI._CurrentStatus.ChangeStatus();
+	}
+	
+	CreateUDPInterface = function(){
+		self._CommunicationUDP = new InterfaceUDP(14,self);
+	}
+	
+	DestroyUDPInterface = function(){
+		self._CommunicationUDP.Destroy();
+		delete self._CommunicationUDP;
+		self.CreateUDPInterface();
+		
+		self._ServiceStation.RegisterLocalStationLocalPortUDP(-1);
+		self._ServiceStation.RegisterLocalStationReportedPortUDP(-1);
+		
+		var CurrentTCPAppAuth = self._CommunicationTCP._ApplicationAuthorizationStatus; 		
+		self._CommunicationUDP.ChangeUDPStatus(
+			 CurrentTCPAppAuth == InterfaceTCPApplicationStatus.ConnectionUnknown ? UDPLocalStatus.NotAvailable :
+			(CurrentTCPAppAuth == InterfaceTCPApplicationStatus.ConnectionAccepted ? UDPLocalStatus.NotStarted : UDPLocalStatus.NotAvailable));
+		
+		if(self._DebugUI._CurrentPage == 3) self._DebugUI._CurrentStatus.ChangeStatus();
 	}
 	
 	Notify = function(_sender,_data = noone){
@@ -87,6 +106,14 @@ function InternetMediator(): Mediator() constructor{
 			case DebugUINotificationKey.TCPDestroy:
 				self.DestroyTCPInterface();
 			break;
+			
+			case DebugUINotificationKey.UDPStart:
+				self._CommunicationUDP.Create(self._CommunicationTCP._ApplicationAuthorizationStatus);
+			break;
+			
+			case DebugUINotificationKey.UDPDestroy:
+				self.DestroyUDPInterface();
+			break;
 		}
 	}
 	
@@ -110,7 +137,7 @@ function InternetMediator(): Mediator() constructor{
 			case TCPNotificationKey.ApplicationAccepted:
 				logger(LOGLEVEL.INFO,"The main server authorized the connection!","PeerFrameworkTCPCommunicationInterface");
 				self._ServiceStation.RegisterLocalStation(_data._Data[2],_data._Data[1],_data._Data[0]);
-				self._CommunicationUDP.ChangeConnectionStatusToServer(InterfaceTCPApplicationStatus.ConnectionAccepted);	
+				self._CommunicationUDP.ChangeUDPStatus(UDPLocalStatus.NotStarted);	
 			break;
 			
 			case TCPNotificationKey.ApplicationRejected:
@@ -124,7 +151,7 @@ function InternetMediator(): Mediator() constructor{
 	}
 	
 	HandleUDPNotification = function(_data){
-		switch(_data.Identification){
+		switch(_data._Identification){
 			case UDPNotificationKey.SocketCreationOk:
 				self._ServiceStation.RegisterLocalStationLocalPortUDP(_data._Data);
 			break;

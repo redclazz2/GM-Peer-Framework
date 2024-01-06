@@ -18,6 +18,7 @@ function InterfaceTCP(MyPort,MyIp,BlockingSocket,Timeout,MyMediator):Communicati
 		network_destroy(self._Socket);
 		self._Socket = -1;
 		buffer_delete(self._InterfaceTCPBuffer);
+		self._InterfaceTCPBuffer = -1;
 		logger(LOGLEVEL.DEBUG,"Destroy Function!","PeerFrameworkTCPCommunicationInterface");
 	}
 	

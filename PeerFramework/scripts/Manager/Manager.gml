@@ -52,7 +52,9 @@ function DebugUIMachine(PeerFrameworkDataSource) constructor{
 	Draw = function(){
 		if(self._DrawDebugInterface){
 			draw_text(10,10,"Peer Framework - Debug UI");
+			draw_set_color(c_lime);
 			draw_text(10,30,$"Current Page: {self._CurrentStatus._CurrentWindow}");
+			draw_set_color(c_white);
 			draw_text(10,50,"<- A || D -> || Hide: F3");
 			_CurrentStatus.Draw();
 		}
