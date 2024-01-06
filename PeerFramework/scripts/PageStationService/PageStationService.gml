@@ -12,7 +12,7 @@ function MachineStateStationService(MyMachine):MachineDebugUIState(MyMachine) co
 	Draw =  function(){
 		draw_text(10,90,"-------------------------------------");
 		draw_text(10,110, $"{self._CurrentLocalDraw._CurrentSubPageName}");
-		draw_text(10,230,"-------------------------------------");
+		draw_text(10,250,"-------------------------------------");
 		
 		self._CurrentLocalDraw.Draw();
 	}

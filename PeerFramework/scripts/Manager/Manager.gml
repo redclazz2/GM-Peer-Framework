@@ -2,7 +2,7 @@ function DebugUIMachine(PeerFrameworkDataSource) constructor{
 	_PeerFrameworkData = PeerFrameworkDataSource;
 	_CurrentStatus = -1;
 	_CurrentPage = 0;
-	_MaxPageIndex = 2;
+	_MaxPageIndex = 3;
 	_DrawDebugInterface = true;
 	
 	ChangeStatus =  function(_MenuChange){
@@ -21,11 +21,16 @@ function DebugUIMachine(PeerFrameworkDataSource) constructor{
 			
 			case 1:
 				self._CurrentStatus = new MachineStateTCPInterface(self);
-				self._CurrentStatus.ChangeTCPStatus();
+				self._CurrentStatus.ChangeStatus();
 			break;
 			
 			case 2:
 				self._CurrentStatus = new MachineStateStationService(self);
+				self._CurrentStatus.ChangeStatus();
+			break;
+			
+			case 3:
+				self._CurrentStatus = new MachineStateUDPInterface(self);
 				self._CurrentStatus.ChangeStatus();
 			break;
 		}
@@ -46,7 +51,7 @@ function DebugUIMachine(PeerFrameworkDataSource) constructor{
 	
 	Draw = function(){
 		if(self._DrawDebugInterface){
-			draw_text(10,10,"Peer Framework");
+			draw_text(10,10,"Peer Framework - Debug UI");
 			draw_text(10,30,$"Current Page: {self._CurrentStatus._CurrentWindow}");
 			draw_text(10,50,"<- A || D -> || Hide: F3");
 			_CurrentStatus.Draw();

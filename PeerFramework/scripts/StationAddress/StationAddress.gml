@@ -1,9 +1,7 @@
-function StationAddress(StationIP,StationPort) constructor{
+function StationAddress(StationIP,StationPort,UDPLocal = -1,UDPReported = -1,NAT = StationNAT.Unknown) constructor{
 	_StationIPAddress = StationIP;
 	_StationPortTCP = StationPort;
-	_StationPortUDP = -1;
-	
-	SetPortUDP = function(Port){
-		self._StationPortUDP = Port;
-	}
+	_StationPortUDPLocal = UDPLocal;
+	_StationPortUDPReported = UDPReported;
+	_StationNAT = NAT;
 }

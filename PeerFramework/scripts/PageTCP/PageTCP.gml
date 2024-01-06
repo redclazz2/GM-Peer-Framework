@@ -3,7 +3,9 @@ function MachineStateTCPInterface(MyMachine):MachineDebugUIState(MyMachine) cons
 	_CurrentWindow = "TCP Interface";
 	_CurrentStatus = new SubPage(self); 
 		
-	ChangeTCPStatus = function(){
+	ChangeStatus = function(){
+		self._TCPData = self._Machine._PeerFrameworkData._CommunicationTCP;
+		
 		switch(self._TCPData._InternalDebugStatusKey){
 			case InterfaceTCPProtocolStatus.Attempt:
 				self._CurrentStatus = new SubPageTCPAttempt(self);
@@ -21,11 +23,6 @@ function MachineStateTCPInterface(MyMachine):MachineDebugUIState(MyMachine) cons
 				self._CurrentStatus = new SubPageTCPFailed(self);
 			break;
 		}	
-	}
-	
-	ChangeTCPData = function(){
-		self._TCPData = self._Machine._PeerFrameworkData._CommunicationTCP;
-		self.ChangeTCPStatus();
 	}
 	
 	Draw = function(){

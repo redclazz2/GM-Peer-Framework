@@ -9,19 +9,37 @@ function ServiceStation() constructor{
 	}
 	
 	Destroy = function(){
-		var _ArrayMap = ds_map_values_to_array(self._StationMapData);
-		for(var i = 0; i < _ArrayMap.length; i++){
-			_ArrayMap[i].Destroy();
-			delete _ArrayMap[i];
-			_ArrayMap[i] = -1;
-		}
-		
+		self.UnregisterAll();
 		ds_map_destroy(self._StationMapData);
 	}
 	
 	RegisterLocalStation = function(_ConstantId,_StationPortTCP,_StationAddress){
 		self._LocalStationConstantId = _ConstantId;
 		ds_map_add(self._StationMapData,_ConstantId,new StationInformation(_ConstantId,_StationAddress,_StationPortTCP));
+	}
+	
+	RegisterLocalStationLocalPortUDP = function(NewPort){
+		var LocalStation = ds_map_find_value(self._StationMapData,self._LocalStationConstantId);
+		LocalStation.SetNewLocalPortUDP(NewPort);
+	}
+	
+	RegisterLocalStationReportedPortUDP = function(NewPort){
+		var LocalStation = ds_map_find_value(self._StationMapData,self._LocalStationConstantId);
+		LocalStation.SetNewReportedPortUDP(NewPort);
+	}
+	
+	UnregisterStation = function(_ConstantId){
+		var Station = ds_map_find_value(self._StationMapData,_ConstantId);
+		Station.Destroy();
+		delete Station;
+		ds_map_delete(self._StationMapData,_ConstantId);
+	}
+	
+	UnregisterAll = function(){
+		var _ArrayMap = ds_map_keys_to_array(self._StationMapData);
+		for(var i = 0; i < array_length(_ArrayMap); i++){
+			self.UnregisterStation(_ArrayMap[i]);
+		}
 	}
 	
 	GetStationInformation = function(_ConstantId){

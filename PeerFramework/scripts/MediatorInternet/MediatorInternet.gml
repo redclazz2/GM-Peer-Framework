@@ -1,8 +1,9 @@
 function InternetMediator(): Mediator() constructor{
-	_CurrentConfiguration = -1;
-	_CurrentProtocolManager = -1;
-	_CommunicationTCP = -1;
-	_ServiceStation = -1;
+	_CurrentConfiguration = -1; //Cleaned
+	_CurrentProtocolManager = -1; //Cleaned
+	_CommunicationTCP = -1; //Cleaned
+	_CommunicationUDP = -1;
+	_ServiceStation = -1; //Cleaned
 	_DebugUI = -1;
 	
 	Create = function(){
@@ -13,6 +14,8 @@ function InternetMediator(): Mediator() constructor{
 		self._CurrentProtocolManager.Create();
 		
 		self.CreateTCPInterface();
+		
+		self._CommunicationUDP = new InterfaceUDP(14,self);
 		
 		self._ServiceStation = new ServiceStation();
 		self._ServiceStation.Create();
@@ -28,6 +31,16 @@ function InternetMediator(): Mediator() constructor{
 		self._CommunicationTCP.Create();
 	}
 	
+	DestroyTCPInterface = function(){
+		self._CommunicationTCP.Destroy();
+		delete self._CommunicationTCP;
+		self.CreateTCPInterface();
+				
+		self._ServiceStation.UnregisterAll();
+		self._CommunicationUDP.Destroy();
+		if(self._DebugUI._CurrentPage == 1 || self._DebugUI._CurrentPage == 3) self._DebugUI._CurrentStatus.ChangeStatus();
+	}
+	
 	Destroy = function(){
 		delete self._CurrentConfiguration;
 		self._CurrentConfiguration = -1;
@@ -35,6 +48,14 @@ function InternetMediator(): Mediator() constructor{
 		self._CurrentProtocolManager.Destroy();
 		delete self._CurrentProtocolManager;
 		self._CurrentProtocolManager = -1;
+		
+		self._CommunicationTCP.Destroy();
+		delete self._CommunicationTCP;
+		self._CommunicationTCP = -1;
+		
+		self._ServiceStation.Destroy();
+		delete self._ServiceStation;
+		self._ServiceStation = -1;
 	}
 	
 	Notify = function(_sender,_data = noone){
@@ -50,6 +71,10 @@ function InternetMediator(): Mediator() constructor{
 			case MediatorNotificationKey.IncomingNetworkData:
 				self.HandleIncomingNetworkData(_data);
 			break;
+			
+			case MediatorNotificationKey.UDP:
+				self.HandleUDPNotification(_data);
+			break;
 		}
 	}
 	
@@ -60,10 +85,7 @@ function InternetMediator(): Mediator() constructor{
 			break;
 			
 			case DebugUINotificationKey.TCPDestroy:
-				self._CommunicationTCP.Destroy();
-				delete self._CommunicationTCP;
-				self.CreateTCPInterface();
-				if(self._DebugUI._CurrentPage == 1) self._DebugUI._CurrentStatus.ChangeTCPData();
+				self.DestroyTCPInterface();
 			break;
 		}
 	}
@@ -86,18 +108,33 @@ function InternetMediator(): Mediator() constructor{
 			break;
 			
 			case TCPNotificationKey.ApplicationAccepted:
-				logger(LOGLEVEL.ERROR,"The main server authorized the connection!","PeerFrameworkTCPCommunicationInterface");
+				logger(LOGLEVEL.INFO,"The main server authorized the connection!","PeerFrameworkTCPCommunicationInterface");
 				self._ServiceStation.RegisterLocalStation(_data._Data[2],_data._Data[1],_data._Data[0]);
-				
+				self._CommunicationUDP.ChangeConnectionStatusToServer(InterfaceTCPApplicationStatus.ConnectionAccepted);	
 			break;
 			
 			case TCPNotificationKey.ApplicationRejected:
-			//When a UI exists this can trigger a pop up
+				//When a UI exists this can trigger a pop up
 				logger(LOGLEVEL.ERROR,"The main server rejected the connection!","PeerFrameworkTCPCommunicationInterface");
+				self._CommunicationUDP.ChangeConnectionStatusToServer(InterfaceTCPApplicationStatus.ConnectionRejected);	
 			break;
 		}
 		
-		if(self._DebugUI._CurrentPage == 1) self._DebugUI._CurrentStatus.ChangeTCPStatus();
+		if(self._DebugUI._CurrentPage == 1 || self._DebugUI._CurrentPage == 3) self._DebugUI._CurrentStatus.ChangeStatus();
+	}
+	
+	HandleUDPNotification = function(_data){
+		switch(_data.Identification){
+			case UDPNotificationKey.SocketCreationOk:
+				self._ServiceStation.RegisterLocalStationLocalPortUDP(_data._Data);
+			break;
+			
+			case UDPNotificationKey.SocketCreationFailed:
+			
+			break;
+		}
+		
+		if(self._DebugUI._CurrentPage == 3) self._DebugUI._CurrentStatus.ChangeStatus();
 	}
 	
 	HandleIncomingNetworkData = function(_data){
