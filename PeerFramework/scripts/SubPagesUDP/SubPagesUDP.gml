@@ -23,8 +23,9 @@ function SubPageUDPNotStarted(MyMainPage):SubPage(MyMainPage) constructor{
 function SubPageUDPStarted(MyMainPage):SubPage(MyMainPage) constructor{
 	_CurrentSubPageName = "Started OK";
 	
-	Draw = function(){
-		draw_text(10,210,"Press ENTER to destroy UDP local server!");
+	Draw = function(){	
+		draw_text(10,210,$"Authentication Status: {(self._MainPage._UDPData._InternalAuthenticationStatus == UDPAuthenticationStatus.NotAuthenticated ? "N/A" : "OK")}");
+		draw_text(10,230,"Press ENTER to destroy UDP local server!");
 	}
 	
 	Step = function(){

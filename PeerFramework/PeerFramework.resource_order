@@ -84,6 +84,7 @@
     {"name":"StationData","order":8,"path":"folders/PeerFramework/StationData.yy",},
     {"name":"Enums","order":3,"path":"folders/PeerFramework/StationData/Enums.yy",},
     {"name":"Rooms","order":10,"path":"folders/Rooms.yy",},
+    {"name":"Writers","order":2,"path":"folders/PeerFramework/Communication/UDP/Writers.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"__input_exception_handler","order":14,"path":"scripts/__input_exception_handler/__input_exception_handler.yy",},
@@ -274,6 +275,7 @@
     {"name":"input_player_gamepad_type_override_set","order":5,"path":"scripts/input_player_gamepad_type_override_set/input_player_gamepad_type_override_set.yy",},
     {"name":"input_binding_gamepad_button","order":2,"path":"scripts/input_binding_gamepad_button/input_binding_gamepad_button.yy",},
     {"name":"input_binding_mouse_wheel_up","order":6,"path":"scripts/input_binding_mouse_wheel_up/input_binding_mouse_wheel_up.yy",},
+    {"name":"UDPWriters","order":1,"path":"scripts/UDPWriters/UDPWriters.yy",},
     {"name":"input_system_export","order":9,"path":"scripts/input_system_export/input_system_export.yy",},
     {"name":"input_cursor_gyro_enabled_set","order":1,"path":"scripts/input_cursor_gyro_enabled_set/input_cursor_gyro_enabled_set.yy",},
     {"name":"input_combo_get_phase","order":4,"path":"scripts/input_combo_get_phase/input_combo_get_phase.yy",},
@@ -345,6 +347,7 @@
     {"name":"input_gamepad_is_axis","order":9,"path":"scripts/input_gamepad_is_axis/input_gamepad_is_axis.yy",},
     {"name":"input_virtual_create","order":1,"path":"scripts/input_virtual_create/input_virtual_create.yy",},
     {"name":"__input_class_combo_definition","order":3,"path":"scripts/__input_class_combo_definition/__input_class_combo_definition.yy",},
+    {"name":"WritersInterface","order":2,"path":"scripts/WritersInterface/WritersInterface.yy",},
     {"name":"__input_axis_is_directional","order":9,"path":"scripts/__input_axis_is_directional/__input_axis_is_directional.yy",},
     {"name":"input_gamepad_check_pressed","order":1,"path":"scripts/input_gamepad_check_pressed/input_gamepad_check_pressed.yy",},
     {"name":"scribble_msdf_thickness_offset","order":7,"path":"scripts/scribble_msdf_thickness_offset/scribble_msdf_thickness_offset.yy",},

@@ -1,6 +1,5 @@
 function InterpreterTCPInitialStationDataReport(Interface):NetworkDataInterpreter(Interface) constructor{
 	HandleIncomingNetworkData = function(_Ip,_Port,_Buffer){
-		
 		var ReceivedApplicationStatus = buffer_read(_Buffer,buffer_u16),
 			ReceivedStationIPAddress = buffer_read(_Buffer,buffer_string),
 			ReceivedStationTCPPort = buffer_read(_Buffer,buffer_string),
@@ -10,5 +9,13 @@ function InterpreterTCPInitialStationDataReport(Interface):NetworkDataInterprete
 		self._CommunicationInterface._Mediator.Notify(MediatorNotificationKey.TCP,
 			new NotificationData(ReceivedApplicationStatus == InterfaceTCPApplicationStatus.ConnectionAccepted ? TCPNotificationKey.ApplicationAccepted : TCPNotificationKey.ApplicationRejected,
 				[ReceivedStationIPAddress,ReceivedStationTCPPort,ReceivedStationConstantId]));
+	}
+}
+
+function InterpreterTCPIncomingUDPReport(Interface):NetworkDataInterpreter(Interface) constructor{
+	HandleIncomingNetworkData = function(_Ip,_Port,_Buffer){
+		var ReceivedStationUDPPort = buffer_read(_Buffer,buffer_string);
+		self._CommunicationInterface._Mediator.Notify(MediatorNotificationKey.TCP,
+			new NotificationData(TCPNotificationKey.DataPortUDPReport,ReceivedStationUDPPort));
 	}
 }

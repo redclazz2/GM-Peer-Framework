@@ -18,6 +18,7 @@ enum TCPNotificationKey{
 	Failed = 2,
 	ApplicationAccepted = 3,
 	ApplicationRejected = 4,
+	DataPortUDPReport = 5
 }
 
 enum IncomingNetworkType{

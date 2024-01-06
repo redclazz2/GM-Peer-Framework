@@ -31,13 +31,20 @@ function InterfaceTCP(MyPort,MyIp,BlockingSocket,Timeout,MyMediator):Communicati
 	
 	HandleIncomingNetworkData = function(_Ip,_Port,_Buffer){
 		var _IncomingTCPMessageType = buffer_read(_Buffer,buffer_u16);
+		delete self._CurrentIncomeNetworkDataInterpreter;
 		
 		switch(_IncomingTCPMessageType){
 			case TCPMessageTypes.InitialStationDataReport:
 				logger(LOGLEVEL.INFO,"Received initial station data report from server!","PeerFrameworkTCPCommunicationInterface");
-				self.__CurrentIncomeNetworkDataInterpreter = new InterpreterTCPInitialStationDataReport(self);
-				self.__CurrentIncomeNetworkDataInterpreter.HandleIncomingNetworkData(_Ip,_Port,_Buffer);
+				self._CurrentIncomeNetworkDataInterpreter = new InterpreterTCPInitialStationDataReport(self);
+			break;
+			
+			case TCPMessageTypes.StationUDPDataReport:
+				logger(LOGLEVEL.INFO,"Received UDP station data report from server!","PeerFrameworkTCPCommunicationInterface");
+				self._CurrentIncomeNetworkDataInterpreter = new InterpreterTCPIncomingUDPReport(self);
 			break;
 		}
+		
+		self._CurrentIncomeNetworkDataInterpreter.HandleIncomingNetworkData(_Ip,_Port,_Buffer);
 	}
 }

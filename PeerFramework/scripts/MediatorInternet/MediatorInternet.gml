@@ -1,14 +1,11 @@
 function InternetMediator(): Mediator() constructor{
 	_CurrentConfiguration = -1; //Cleaned
 	_CurrentProtocolManager = -1; //Cleaned
-	_CommunicationTCP = -1; //Cleaned
-	_CommunicationUDP = -1;
-	_ServiceStation = -1; //Cleaned
+	_CommunicationTCP = -1; //Cleane
 	_DebugUI = -1;
 	
 	Create = function(){
-		self._CurrentConfiguration = new PeerConfiguration(PeerConfigurationNetworkType.Internet,PeerConfigurationTickRate.DesktopTick,
-			PeerConfigurationNetDev.Development, PeerConfigurationIpVersion.IPv4);
+		self._CurrentConfiguration = new PeerConfiguration(PeerConfigurationNetworkType.Internet,PeerConfigurationTickRate.DesktopTick,PeerConfigurationNetDev.Development, PeerConfigurationIpVersion.IPv4);
 		
 		self._CurrentProtocolManager = new ProtocolManager(self._CurrentConfiguration.GetConfTickRate,self);
 		self._CurrentProtocolManager.Create();
@@ -59,24 +56,19 @@ function InternetMediator(): Mediator() constructor{
 	
 	CreateUDPInterface = function(){
 		self._CommunicationUDP = new InterfaceUDP(14,self);
-	}
-	
-	DestroyUDPInterface = function(){
-		self._CommunicationUDP.Destroy();
-		delete self._CommunicationUDP;
-		self.CreateUDPInterface();
-		
-		self._ServiceStation.RegisterLocalStationLocalPortUDP(-1);
-		self._ServiceStation.RegisterLocalStationReportedPortUDP(-1);
 		
 		var CurrentTCPAppAuth = self._CommunicationTCP._ApplicationAuthorizationStatus; 		
 		self._CommunicationUDP.ChangeUDPStatus(
 			 CurrentTCPAppAuth == InterfaceTCPApplicationStatus.ConnectionUnknown ? UDPLocalStatus.NotAvailable :
 			(CurrentTCPAppAuth == InterfaceTCPApplicationStatus.ConnectionAccepted ? UDPLocalStatus.NotStarted : UDPLocalStatus.NotAvailable));
-		
-		if(self._DebugUI._CurrentPage == 3) self._DebugUI._CurrentStatus.ChangeStatus();
 	}
 	
+	InitializeUDPInterface = function(){
+		if(self._CommunicationTCP._ApplicationAuthorizationStatus == InterfaceTCPApplicationStatus.ConnectionAccepted){
+			self._CommunicationUDP.Create();
+		}else logger(LOGLEVEL.ERROR,"Attempting to create a UDP server when TCP connection isn't available.","PeerFrameworkInternetMediator");
+	}
+		
 	Notify = function(_sender,_data = noone){
 		switch(_sender){
 			case MediatorNotificationKey.DebugUI:
@@ -108,7 +100,7 @@ function InternetMediator(): Mediator() constructor{
 			break;
 			
 			case DebugUINotificationKey.UDPStart:
-				self._CommunicationUDP.Create(self._CommunicationTCP._ApplicationAuthorizationStatus);
+				self.InitializeUDPInterface();
 			break;
 			
 			case DebugUINotificationKey.UDPDestroy:
@@ -129,7 +121,6 @@ function InternetMediator(): Mediator() constructor{
 			break;
 			
 			case TCPNotificationKey.Failed:
-				//When a UI exists this can trigger a pop up
 				logger(LOGLEVEL.ERROR,"Unable to connect to TCP server!","PeerFrameworkTCPCommunicationInterface");
 				self._CommunicationTCP._InternalDebugStatusKey = InterfaceTCPProtocolStatus.Failed;
 			break;
@@ -141,12 +132,16 @@ function InternetMediator(): Mediator() constructor{
 			break;
 			
 			case TCPNotificationKey.ApplicationRejected:
-				//When a UI exists this can trigger a pop up
 				logger(LOGLEVEL.ERROR,"The main server rejected the connection!","PeerFrameworkTCPCommunicationInterface");
 				self._CommunicationUDP.ChangeConnectionStatusToServer(InterfaceTCPApplicationStatus.ConnectionRejected);	
 			break;
+			
+			case TCPNotificationKey.DataPortUDPReport:
+				logger(LOGLEVEL.INFO,"The main server authorized the UDP connection!","PeerFrameworkTCPCommunicationInterface");
+				self._ServiceStation.RegisterLocalStationReportedPortUDP(_data._Data);
+				self._CommunicationUDP._InternalAuthenticationStatus = UDPAuthenticationStatus.Authenticated;
+			break;
 		}
-		
 		if(self._DebugUI._CurrentPage == 1 || self._DebugUI._CurrentPage == 3) self._DebugUI._CurrentStatus.ChangeStatus();
 	}
 	
@@ -154,6 +149,7 @@ function InternetMediator(): Mediator() constructor{
 		switch(_data._Identification){
 			case UDPNotificationKey.SocketCreationOk:
 				self._ServiceStation.RegisterLocalStationLocalPortUDP(_data._Data);
+				self._CommunicationUDP.StartAuthenticationTimer();
 			break;
 			
 			case UDPNotificationKey.SocketCreationFailed:
@@ -170,7 +166,6 @@ function InternetMediator(): Mediator() constructor{
 				var _IncomingIP = _data._Data[0],
 					_IncomingPort = _data._Data[1],
 					_IncomingBuffer = _data._Data[2];
-				show_debug_message(_IncomingBuffer);
 				self._CommunicationTCP.HandleIncomingNetworkData(_IncomingIP,_IncomingPort,_IncomingBuffer);
 			break;
 			

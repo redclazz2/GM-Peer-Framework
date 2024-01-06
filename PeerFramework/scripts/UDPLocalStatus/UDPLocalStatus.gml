@@ -2,5 +2,10 @@ enum UDPLocalStatus{
 	NotAvailable,
 	NotStarted,
 	Started,
-	Failed
+	Failed,
+}
+
+enum UDPAuthenticationStatus{
+	NotAuthenticated,
+	Authenticated
 }

@@ -96,6 +96,7 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"StationData","folderPath":"folders/PeerFramework/StationData.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Enums","folderPath":"folders/PeerFramework/StationData/Enums.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Rooms","folderPath":"folders/Rooms.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Writers","folderPath":"folders/PeerFramework/Communication/UDP/Writers.yy",},
   ],
   "IncludedFiles": [
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"controllerblacklist.csv","CopyToMask":-1,"filePath":"datafiles",},
@@ -362,6 +363,7 @@
     {"id":{"name":"input_binding_gamepad_button","path":"scripts/input_binding_gamepad_button/input_binding_gamepad_button.yy",},},
     {"id":{"name":"__input_key_get_name","path":"scripts/__input_key_get_name/__input_key_get_name.yy",},},
     {"id":{"name":"input_binding_mouse_wheel_up","path":"scripts/input_binding_mouse_wheel_up/input_binding_mouse_wheel_up.yy",},},
+    {"id":{"name":"UDPWriters","path":"scripts/UDPWriters/UDPWriters.yy",},},
     {"id":{"name":"input_system_export","path":"scripts/input_system_export/input_system_export.yy",},},
     {"id":{"name":"input_cursor_gyro_enabled_set","path":"scripts/input_cursor_gyro_enabled_set/input_cursor_gyro_enabled_set.yy",},},
     {"id":{"name":"ServiceTraversal","path":"scripts/ServiceTraversal/ServiceTraversal.yy",},},
@@ -446,6 +448,7 @@
     {"id":{"name":"input_player_active_get","path":"scripts/input_player_active_get/input_player_active_get.yy",},},
     {"id":{"name":"input_virtual_create","path":"scripts/input_virtual_create/input_virtual_create.yy",},},
     {"id":{"name":"__input_class_combo_definition","path":"scripts/__input_class_combo_definition/__input_class_combo_definition.yy",},},
+    {"id":{"name":"WritersInterface","path":"scripts/WritersInterface/WritersInterface.yy",},},
     {"id":{"name":"__input_axis_is_directional","path":"scripts/__input_axis_is_directional/__input_axis_is_directional.yy",},},
     {"id":{"name":"Manager","path":"scripts/Manager/Manager.yy",},},
     {"id":{"name":"input_icons","path":"scripts/input_icons/input_icons.yy",},},
