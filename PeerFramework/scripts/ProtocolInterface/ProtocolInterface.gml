@@ -3,7 +3,7 @@ function Protocol(ProtocolId,MyProtocolManager) constructor{
 	_PacketQueue = -1;
 	_Manager = MyProtocolManager;
 	
-	InitializeProtocol = function(){
+	Create = function(){
 		self._PacketQueue = ds_queue_create();
 		logger(LOGLEVEL.DEBUG,"A protocol has been initialized!","PeerFrameworkProtocols");
 	}

@@ -97,6 +97,7 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"StationData","folderPath":"folders/PeerFramework/StationData.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Enums","folderPath":"folders/PeerFramework/StationData/Enums.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Rooms","folderPath":"folders/Rooms.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Whitelist","folderPath":"folders/PeerFramework/Communication/UDP/Whitelist.yy",},
   ],
   "IncludedFiles": [
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"controllerblacklist.csv","CopyToMask":-1,"filePath":"datafiles",},
@@ -427,6 +428,7 @@
     {"id":{"name":"input_binding_scan_params_set","path":"scripts/input_binding_scan_params_set/input_binding_scan_params_set.yy",},},
     {"id":{"name":"ServiceStationManager","path":"scripts/ServiceStationManager/ServiceStationManager.yy",},},
     {"id":{"name":"input_combo_params_get","path":"scripts/input_combo_params_get/input_combo_params_get.yy",},},
+    {"id":{"name":"UDPWhiteListData","path":"scripts/UDPWhiteListData/UDPWhiteListData.yy",},},
     {"id":{"name":"__input_class_chord_definition","path":"scripts/__input_class_chord_definition/__input_class_chord_definition.yy",},},
     {"id":{"name":"scribble_glyph_set","path":"scripts/scribble_glyph_set/scribble_glyph_set.yy",},},
     {"id":{"name":"__input_class_source","path":"scripts/__input_class_source/__input_class_source.yy",},},

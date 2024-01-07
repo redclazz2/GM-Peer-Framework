@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "UDPWhiteList",
+  "name": "UDPWhiteListData",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {

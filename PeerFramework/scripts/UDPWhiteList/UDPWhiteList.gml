@@ -17,16 +17,26 @@ function WhiteList() constructor{
 		self._WhiteListLeaseTimer = -1;
 	}
 	
-	SetStationWhiteListing = function(_StationConstantId,_LeaseTime){
+	SetStationWhiteListing = function(_StationConstantId,_StationAddress,_StationPort,_LeaseTime){
+		var StationData = new WhiteListedStation(_StationConstantId,_StationAddress,_StationPort);
 		if(ds_map_exists(self._StationWhiteList,_StationConstantId)){
-			ds_map_replace(self._StationWhiteList,_StationConstantId,_LeaseTime);
+			ds_map_replace(self._StationWhiteList,StationData,_LeaseTime);
 		}else{
-			ds_map_add(self._StationWhiteList,_StationConstantId,_LeaseTime);
+			ds_map_add(self._StationWhiteList,StationData,_LeaseTime);
 		}
 	}
 	
-	GetStationWhiteListing = function(_StationConstantId){
-		return ds_map_find_value(self._StationWhiteList,_StationConstantId);
+	GetStationWhiteListing = function(_StationConstantId,_StationIp,_StationPort){
+		var _Found = ds_map_find_value(self._StationWhiteList,_StationConstantId),
+			_Return = false;
+			
+		if(!is_undefined(_Found)){
+			if(_Found._Ip == _StationIp && _Found._Port == _StationPort){
+				_Return = true;
+			}
+		}
+		
+		return _Return;
 	}
 	
 	DeleteStationWhiteListing = function(_StationConstantId){
