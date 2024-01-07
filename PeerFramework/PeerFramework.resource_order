@@ -475,6 +475,7 @@
     {"name":"input_accessibility_global_cooldown_set","order":1,"path":"scripts/input_accessibility_global_cooldown_set/input_accessibility_global_cooldown_set.yy",},
     {"name":"__input_config_vibration","order":15,"path":"scripts/__input_config_vibration/__input_config_vibration.yy",},
     {"name":"scribble_font_add_from_sprite","order":2,"path":"scripts/scribble_font_add_from_sprite/scribble_font_add_from_sprite.yy",},
+    {"name":"UDPWhiteList","order":3,"path":"scripts/UDPWhiteList/UDPWhiteList.yy",},
     {"name":"__scribble_class_page","order":4,"path":"scripts/__scribble_class_page/__scribble_class_page.yy",},
     {"name":"__input_class_gamepad","order":6,"path":"scripts/__input_class_gamepad/__input_class_gamepad.yy",},
     {"name":"input_cursor_dx","order":2,"path":"scripts/input_cursor_dx/input_cursor_dx.yy",},
