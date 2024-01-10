@@ -16,6 +16,9 @@ function InternetMediator(): Mediator() constructor{
 		self._ServiceStation = new ServiceStation();
 		self._ServiceStation.Create();
 		
+		self._ServiceMesh = new ServiceMesh(self);
+		self._ServiceMesh.Create();
+		
 		self._DebugUI = new DebugUIMachine(self);
 		self._DebugUI.Create();
 		
@@ -38,6 +41,8 @@ function InternetMediator(): Mediator() constructor{
 		delete self._ServiceStation;
 		self._ServiceStation = -1;
 	}
+		
+	#region TCP Create and Destroy
 	
 	CreateTCPInterface = function(){
 		self._CommunicationTCP =  new InterfaceTCP(8056,"127.0.0.1",self._CurrentConfiguration.GetConfGMLNativeUseNonBlockingSocket,self._CurrentConfiguration.GetConfGMLNativeConnectionTimeout(),self);
@@ -54,6 +59,10 @@ function InternetMediator(): Mediator() constructor{
 		if(self._DebugUI._CurrentPage == 1 || self._DebugUI._CurrentPage == 3) self._DebugUI._CurrentStatus.ChangeStatus();
 	}
 	
+	#endregion
+	
+	#region UDP Override from LAN
+	
 	CreateUDPInterface = function(){
 		self._CommunicationUDP = new InterfaceUDP(14,self);
 		
@@ -68,7 +77,20 @@ function InternetMediator(): Mediator() constructor{
 			self._CommunicationUDP.Create();
 		}else logger(LOGLEVEL.ERROR,"Attempting to create a UDP server when TCP connection isn't available.","PeerFrameworkInternetMediator");
 	}
-		
+	
+	#endregion
+	
+	InitiateMeshCreation = function(){
+		if(self._CommunicationUDP._InternalAuthenticationStatus == UDPAuthenticationStatus.Authenticated){
+			self._CommunicationTCP._CurrentWriteAction = new TCPWriterSendMeshCreationRequest(self);
+			self._CommunicationTCP._CurrentWriteAction.
+		}else{
+			logger(LOGLEVEL.ERROR,"Unable to create a mesh if UDP isn't authorized","PeerFrameworkInternetMediator");
+		}
+	}
+	
+	#region Notification and Handlers
+	
 	Notify = function(_sender,_data = noone){
 		switch(_sender){
 			case MediatorNotificationKey.DebugUI:
@@ -174,4 +196,6 @@ function InternetMediator(): Mediator() constructor{
 			break;
 		}
 	}
+
+	#endregion
 }

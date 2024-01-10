@@ -8,6 +8,7 @@ function WhiteList() constructor{
 	}
 	
 	Destroy = function(){
+		CleanDSMapContents(self._StationWhiteList);
 		ds_map_destroy(self._StationWhiteList);
 		self._StationWhiteList = -1;
 		if(time_source_exists(self._WhiteListLeaseTimer)){

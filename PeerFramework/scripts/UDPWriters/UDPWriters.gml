@@ -1,7 +1,7 @@
 function UDPWriterSendAuthenticationRequest(CommunicationUDP):NetworkDataWriter(CommunicationUDP) constructor{
 	Write = function(_data){
 		var buffer = self._CommunicationInterface._InterfaceUDPBuffer;
-		show_debug_message(buffer)
+
 		if(buffer_exists(buffer)){
 			buffer_seek(buffer,buffer_seek_start,1);
 			buffer_write(buffer,buffer_u16,UDPAuthenticationStatus.NotAuthenticated);

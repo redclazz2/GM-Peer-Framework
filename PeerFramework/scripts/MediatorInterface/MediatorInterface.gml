@@ -1,6 +1,7 @@
 function Mediator() constructor{
 	_CommunicationUDP = -1;
 	_ServiceStation = -1; //Cleaned
+	_ServiceMesh = -1;
 	
 	Create =  function(){};
 	Destroy = function(){};

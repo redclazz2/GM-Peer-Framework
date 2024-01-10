@@ -3,6 +3,7 @@ function CommunicationInterface(Port,MyMediator) constructor{
 	_Socket = -1;
 	_Mediator = MyMediator;
 	_CurrentIncomeNetworkDataInterpreter = -1;
+	_CurrentWriteAction = -1;
 	
 	Create = function(){};
 	Destroy = function(){};

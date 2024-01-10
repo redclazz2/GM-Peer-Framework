@@ -7,7 +7,6 @@ function InterfaceUDP(PlayerCount,MyMediator):CommunicationInterface(-1,MyMediat
 	_InternalAuthenticationStatus = UDPAuthenticationStatus.NotAuthenticated;
 	_InterfaceUDPBuffer = -1;
 	_AuthenticationClock = -1;
-	_CurrentWriteAction = -1;
 	
 	Create = function(){	
 		var port = self._InferiorPortRange;

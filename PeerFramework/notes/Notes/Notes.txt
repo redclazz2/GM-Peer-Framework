@@ -1,0 +1,26 @@
+-------------------------------------------------------------------------------------------------
+Informing the main server I'm creating a mesh:
+1. The UDP communication module must be authorized by main server
+2. A method is triggered in the mediator. This method sends a message to
+   Main server asking for a SessionKey. 
+3. The server sends back a SessionKey and Id to the Station.
+4. The station initializes a Mesh and sends the server a confirmation
+   plus the SessionKey.
+5. The server saves the advertice data.
+-------------------------------------------------------------------------------------------------
+Joining a Mesh:
+There's two ways of joining a mesh: 
+
+1. Matchmaking
+	- Station sends a matchmaking ticket to the main server.
+	- Main server finds a session that's suitable for the ticket
+	- Main servers sends the Host Data
+2. Private Code
+	- Station sends a MeshId to the server
+	- Server finds the data for the Host
+	- Main server sends the data to the client
+	
+After any of the two proccesses are finished a Mesh data network event
+is fired in the joining station.
+Based on the mediator in use a NAT Traversal function will be fired to contact
+the mesh owner or directly stablish a connection via Station service.

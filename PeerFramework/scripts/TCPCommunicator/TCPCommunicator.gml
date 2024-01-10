@@ -28,6 +28,11 @@ function InterfaceTCP(MyPort,MyIp,BlockingSocket,Timeout,MyMediator):Communicati
 		self._Mediator.Notify(MediatorNotificationKey.TCP,new NotificationData(TCPNotificationKey.Attempt));
 		network_connect_raw_async(self._Socket,self._SocketGMLNativeRemoteIp,self._SocketGMLNativePort);	
 	}
+		
+	HandleWriteData = function(_data = undefined){
+		if(self._ApplicationAuthorizationStatus == InterfaceTCPApplicationStatus.ConnectionAccepted)
+			self._CurrentWriteAction.Write(_data);
+	}
 	
 	HandleIncomingNetworkData = function(_Ip,_Port,_Buffer){
 		var _IncomingTCPMessageType = buffer_read(_Buffer,buffer_u16);
