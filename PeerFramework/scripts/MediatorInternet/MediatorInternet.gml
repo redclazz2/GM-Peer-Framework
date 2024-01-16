@@ -83,9 +83,9 @@ function InternetMediator(): Mediator() constructor{
 	InitiateMeshCreation = function(){
 		if(self._CommunicationUDP._InternalAuthenticationStatus == UDPAuthenticationStatus.Authenticated){
 			self._CommunicationTCP._CurrentWriteAction = new TCPWriterSendMeshCreationRequest(self);
-			self._CommunicationTCP._CurrentWriteAction.
+			self._CommunicationTCP._CurrentWriteAction.Write();
 		}else{
-			logger(LOGLEVEL.ERROR,"Unable to create a mesh if UDP isn't authorized","PeerFrameworkInternetMediator");
+			logger(LOGLEVEL.ERROR,"Unable to create a mesh if local UDP isn't authorized","PeerFrameworkInternetMediator");
 		}
 	}
 	

@@ -58,6 +58,7 @@
     {"name":"Interfaces","order":1,"path":"folders/PeerFramework/Communication/Interfaces.yy",},
     {"name":"TCP","order":2,"path":"folders/PeerFramework/Communication/TCP.yy",},
     {"name":"Interpreters","order":3,"path":"folders/PeerFramework/Communication/TCP/Interpreters.yy",},
+    {"name":"Writers","order":4,"path":"folders/PeerFramework/Communication/TCP/Writers.yy",},
     {"name":"UDP","order":3,"path":"folders/PeerFramework/Communication/UDP.yy",},
     {"name":"Whitelist","order":4,"path":"folders/PeerFramework/Communication/UDP/Whitelist.yy",},
     {"name":"Writers","order":2,"path":"folders/PeerFramework/Communication/UDP/Writers.yy",},
@@ -89,7 +90,6 @@
     {"name":"Enums","order":3,"path":"folders/PeerFramework/StationData/Enums.yy",},
     {"name":"Utils","order":9,"path":"folders/PeerFramework/Utils.yy",},
     {"name":"Rooms","order":10,"path":"folders/Rooms.yy",},
-    {"name":"Writers","order":4,"path":"folders/PeerFramework/Communication/TCP/Writers.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"__input_exception_handler","order":14,"path":"scripts/__input_exception_handler/__input_exception_handler.yy",},
