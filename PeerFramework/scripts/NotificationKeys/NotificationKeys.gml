@@ -10,6 +10,7 @@ enum DebugUINotificationKey{
 	TCPDestroy = 1,
 	UDPStart = 2,
 	UDPDestroy = 3,
+	MeshCreationRequest = 4,
 }
 
 enum TCPNotificationKey{

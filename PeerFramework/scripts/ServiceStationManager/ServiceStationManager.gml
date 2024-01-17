@@ -20,12 +20,12 @@ function ServiceStation() constructor{
 	
 	RegisterLocalStationLocalPortUDP = function(NewPort){
 		var LocalStation = ds_map_find_value(self._StationMapData,self._LocalStationConstantId);
-		LocalStation.SetNewLocalPortUDP(NewPort);
+		if(LocalStation != undefined) LocalStation.SetNewLocalPortUDP(NewPort);
 	}
 	
 	RegisterLocalStationReportedPortUDP = function(NewPort){
 		var LocalStation = ds_map_find_value(self._StationMapData,self._LocalStationConstantId);
-		LocalStation.SetNewReportedPortUDP(NewPort);
+		if(LocalStation != undefined) LocalStation.SetNewReportedPortUDP(NewPort);
 	}
 	
 	UnregisterStation = function(_ConstantId){

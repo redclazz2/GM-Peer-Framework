@@ -80,15 +80,6 @@ function InternetMediator(): Mediator() constructor{
 	
 	#endregion
 	
-	InitiateMeshCreation = function(){
-		if(self._CommunicationUDP._InternalAuthenticationStatus == UDPAuthenticationStatus.Authenticated){
-			self._CommunicationTCP._CurrentWriteAction = new TCPWriterSendMeshCreationRequest(self);
-			self._CommunicationTCP._CurrentWriteAction.Write();
-		}else{
-			logger(LOGLEVEL.ERROR,"Unable to create a mesh if local UDP isn't authorized","PeerFrameworkInternetMediator");
-		}
-	}
-	
 	#region Notification and Handlers
 	
 	Notify = function(_sender,_data = noone){
@@ -127,6 +118,10 @@ function InternetMediator(): Mediator() constructor{
 			
 			case DebugUINotificationKey.UDPDestroy:
 				self.DestroyUDPInterface();
+			break;
+			
+			case DebugUINotificationKey.MeshCreationRequest:
+				self.InitiateMeshCreation();
 			break;
 		}
 	}
@@ -198,4 +193,13 @@ function InternetMediator(): Mediator() constructor{
 	}
 
 	#endregion
+
+	InitiateMeshCreation = function(){
+		if(self._CommunicationUDP._InternalAuthenticationStatus == UDPAuthenticationStatus.Authenticated){
+			self._CommunicationTCP.ChangeTCPWriter(new TCPWriterSendMeshCreationRequest(self._CommunicationTCP));
+			self._CommunicationTCP.HandleWriteData();
+		}else{
+			logger(LOGLEVEL.ERROR,"Unable to create a mesh if local UDP isn't authorized","PeerFrameworkInternetMediator");
+		}
+	}	
 }

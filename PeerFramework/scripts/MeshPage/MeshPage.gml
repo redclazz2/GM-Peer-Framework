@@ -11,6 +11,10 @@ function MachineStateMeshService(MyMachine):MachineDebugUIState(MyMachine) const
 	}
 	
 	Step = function(){
+		if(input_check_pressed("action")){
+			self._Machine.Notify(DebugUINotificationKey.MeshCreationRequest);
+		}
 		
+		//Z or C logic
 	}
 }
